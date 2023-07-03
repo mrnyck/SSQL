@@ -1,0 +1,50 @@
+CREATE TABLE CLOTHING_STORE (id INTEGER PRIMARY KEY, item text, size text, colour text, quantity integer, price integer);
+
+
+INSERT INTO CLOTHING_STORE VALUES (1,'Jakets','small','blue',1,'£5.99');
+
+INSERT INTO CLOTHING_STORE VALUES (2,'Trousers','xl','black',2,'£29.99');
+
+INSERT INTO CLOTHING_STORE VALUES (3,'Trousers','small','red',4,'£15.99');
+
+INSERT INTO CLOTHING_STORE VALUES (4,'Hats','medium','grey',1,'£20.00');
+
+INSERT INTO CLOTHING_STORE VALUES (5,'T-shirt','large', 'blue',6,'£22.00');
+
+INSERT INTO CLOTHING_STORE VALUES (6,'Rollneck','x-small','orange',2,'£40.00');
+
+INSERT INTO CLOTHING_STORE VALUES (7,'Dress','medium','pink',1,'£12.99');
+
+INSERT INTO CLOTHING_STORE VALUES (8,'Shirts','large','light-blue',1,'£25.99');
+
+INSERT INTO CLOTHING_STORE VALUES (9, 'Vest','xxl','white',2,'£6.99');
+
+INSERT INTO CLOTHING_STORE VALUES (10,'Sunglasses','one-size','black',1,'£30.00');
+
+INSERT INTO CLOTHING_STORE VALUES (11,'SCARF','ONE-SIZE','Green',3,'£17.99');
+
+INSERT INTO CLOTHING_STORE VALUES (12,'T-shirts','small','Purple',3,'£10.00');
+
+INSERT INTO CLOTHING_STORE VALUES (13,'Trousers','large','brown',1,'£16.99');
+
+INSERT INTO CLOTHING_STORE VALUES (14,'Trousers','medium','red',1,'£25.00');
+
+INSERT INTO CLOTHING_STORE VALUES (15,'Roll-neck','large','lilac',1,'£23.99');
+
+
+--Show all items in the clothing store table
+
+SELECT * FROM CLOTHING_STORE;
+
+-- show T-shirts that are size large and colour brown
+
+SELECT item,colour,size FROM CLOTHING_STORE
+where size = 'large' and colour = 'brown';
+
+--show quantity that is 2
+
+SELECT * FROM CLOTHING_STORE 
+WHERE quantity = 2;
+
+
+
