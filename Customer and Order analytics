@@ -1,0 +1,41 @@
+This quqery shows the number of orders in January
+
+SELECT COUNT(*) FROM JanSales;
+
+This query shows orders where the product was iPhone
+
+SELECT COUNT(*) FROM JanSales
+WHERE Product = 'iPhone'
+AND length(orderID) = 6
+AND orderid <> 'order ID';
+
+This query shows all the customer account number that placed orders in febuary 
+
+SELECT DISTINCT acctnum FROM customers
+JOIN FebSales ON customers.order_id = FebSales.orderid
+WHERE length(orderID) = 6
+AND orderid <> 'order ID';
+
+This query shows the product that was the lowest in price
+
+SELECT MIN(price),Product FROM JanSales;
+
+This query shows the total revenue for each product sold in january
+
+SELECT SUM(Quantity) * price AS revenue,Product FROM JanSales
+GROUP BY Product;
+
+This query shows what products were sold in febuary how many of each were sold and the total revenue at location 548 Lincoln St, Seattle, WA 98101 
+
+SELECT Product,SUM(Quantity) as amount_sold, SUM(Quantity * price) AS total_revenue FROM FebSales
+WHERE location = '548 Lincoln St, Seattle, WA 98101'
+GROUP BY product;
+
+This query shows customers who ordered more than two product at a time and shows the average amount spent
+
+SELECT COUNT(acctnum) AS customer_number, AVG(Quantity * price) AS average_spend,Product FROM FebSales
+JOIN customers ON customers.order_id = FebSales.orderID
+WHERE Quantity > 2
+AND length(orderID) = 6
+AND orderid <> 'order ID';
+
