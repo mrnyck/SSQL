@@ -39,3 +39,9 @@ WHERE Quantity > 2
 AND length(orderID) = 6
 AND orderid <> 'order ID';
 
+This is a query displaying the use of the LIKE  function
+
+SELECT SUM(Quantity),Product FROM FebSales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY Product
+
