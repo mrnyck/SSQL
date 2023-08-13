@@ -9,7 +9,7 @@ WHERE Product = 'iPhone'
 AND length(orderID) = 6
 AND orderid <> 'order ID';
 
-This query shows all the customer account number that placed orders in febuary 
+This query shows all the customer account number that placed orders in Febuary 
 
 SELECT DISTINCT acctnum FROM customers
 JOIN FebSales ON customers.order_id = FebSales.orderid
@@ -20,7 +20,7 @@ This query shows the product that was the lowest in price
 
 SELECT MIN(price),Product FROM JanSales;
 
-This query shows the total revenue for each product sold in january
+This query shows the total revenue for each product sold in January
 
 SELECT SUM(Quantity) * price AS revenue,Product FROM JanSales
 GROUP BY Product;
@@ -43,5 +43,47 @@ This is a query displaying the use of the LIKE  function
 
 SELECT SUM(Quantity),Product FROM FebSales
 WHERE location LIKE '%Los Angeles%'
+GROUP BY Product;
+
+This query shows the locations in New York, where atleast 3 orders where received in January and how many orders each place received.
+
+SELECT DISTINCT location,COUNT(orderID) FROM JanSales
+WHERE location LIKE '%NY%'
+AND length(orderid) = 6 
+AND orderid <> 'Order ID'
+GROUP BY location
+HAVING COUNT (orderID) > 2;
+
+This query shows how many of each type of headphones were sold in Febuary
+
+SELECT SUM(Quantity),Product FROM FebSales
+WHERE Product LIKE '%Headphones%'
+GROUP BY Product;
+
+This shows the average amount spent per account
+
+SELECT SUM(Quantity * price)/ COUNT(acctnum) avg_spent FROM FebSales
+JOIN customers ON customers.order_id = FebSales.orderID
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+This query shows the average quantity of products perchased per account in Febuary
+
+SELECT SUM(Quantity)/ COUNT(acctnum) FROM FebSales
+JOIN customers ON customers.order_id = FebSales.orderID
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+This query shows the product that brought in the most revenue in January and how much revenue it brought in total
+
+SELECT SUM(Quantity * price) AS revenue ,Product FROM JanSales
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID'
 GROUP BY Product
+ORDER BY revenue  DESC
+LIMIT 1 ;
+
+
+
+
 
